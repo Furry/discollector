@@ -1,4 +1,5 @@
 pub mod mods;
+pub mod error;
 pub mod discord;
 
 #[macro_use]
@@ -39,9 +40,14 @@ async fn main() {
     //     }
     // }).await.unwrap();
 
-
+    let ids = vec!["283058069305294848", "235804673578237952", "136815694095450113", "597337833027403778", "471889301622226946", "209002718897897472"];
     let session = Session::new(token);
-    session.guild("244230771232079873").await;
+    // let x = session.user("472474701919158275").await.unwrap();
+    
+    for id in ids {
+        session.user(id).await.unwrap();
+    }
+    // session.guild("244230771232079873").await;
 
     // println!("Creating 1");
     // let f1 = async {};
@@ -56,3 +62,4 @@ async fn main() {
     //     c.clone().handle();
     // });
 }
+

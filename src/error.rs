@@ -1,26 +1,19 @@
 use std::fmt;
 
 #[derive(Debug, Clone)]
-pub struct DiscollectorError {
-    message: Option<String>
+pub enum DiscollectorError {
+    SerializationError(String),
+    UnknownError
 }
+
+impl std::error::Error for DiscollectorError {}
 
 impl fmt::Display for DiscollectorError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        match self.message.is_some() {
-            true => {
-                let message = self.message
-                    .clone()
-                    .unwrap();
-                write!(f, "{}", message.as_str())
-            },
-            _ => write!(f, "Unknown Discollector Error.")
-        }
-    }
-}
-
-impl Default for DiscollectorError {
-    fn default() -> Self {
-        Self { message: None }
+        let c = match self {
+            DiscollectorError::UnknownError => "Unknown Error",
+            _ => "N/A"
+        };
+        write!(f, "{}", c)
     }
 }

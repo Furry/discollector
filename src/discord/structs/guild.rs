@@ -88,3 +88,27 @@ pub struct Role {
     unicode_emoji: Option<String>,
     tags: Option<Tags>
 }
+
+#[derive(Deserialize, Serialize, Debug)]
+pub struct GuildMember {
+    roles: Vec<Snowflake>,
+    nick: Option<String>,
+    avatar: Option<String>,
+    premium_since: Option<String>,
+    joined_at: String,
+    is_pending: bool,
+    communication_disabled_until: Option<String>,
+    bio: String,
+    banner: Option<String>,
+    mute: bool,
+    deaf: bool
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+pub struct GuildUser {
+    id: Snowflake,
+    username: String,
+    avatar: Option<String>,
+    discriminator: String,
+    public_flags: u64
+}

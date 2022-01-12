@@ -6,3 +6,10 @@ macro_rules! pub_struct {
         }
     }
 }
+
+#[macro_export]
+macro_rules! disc_result {
+    ( $( $x:expr ),* ) => {
+        
+    };
+}
